@@ -20,12 +20,14 @@ def recordVideo(filename):
     # Wait for the recording to finish
     process.wait()
 
+    print("Saved video.....")
+
 def getAcclerAndGyro():
     # Wait for any tilt or acceleration
     while True:
         acceleration_data = sensor.get_accel_data()
         gyroscope_data = sensor.get_gyro_data()
-        acceleration_threshold = 0.1  # Set acceleration threshold here
+        acceleration_threshold = 1.0  # Set acceleration threshold here
         tilt_threshold = 1.0  # Set tilt threshold here
 
         if (abs(acceleration_data['x']) > acceleration_threshold or
@@ -40,6 +42,7 @@ def getAcclerAndGyro():
             # recording video for 5 second
             filename = 'video.avi'
             recordVideo(filename=filename)
+            sleep(2)
 
             # sending recorded file with mail
             attachMail.send(filename)
