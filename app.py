@@ -51,7 +51,7 @@ def getAcclerAndGyro():
             msgTwilio.sendMsg()
 
         else:
-            pass
+            print("Waiting for motion...")
 
         sleep(3)
 
