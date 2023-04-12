@@ -37,7 +37,6 @@ def getAcclerAndGyro():
                 abs(gyroscope_data['x']) > tilt_threshold or
                 abs(gyroscope_data['y']) > tilt_threshold or
                 abs(gyroscope_data['z']) > tilt_threshold):
-            print('Motion detected! Starting video recording...')
             
 
             # recording video for 5 second
