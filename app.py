@@ -11,9 +11,10 @@ sensor = mpu6050(0x68)
 def recordVideo(filename):
     # Set the output filename and duration
     duration = 5
+    resolution = '640x480'
 
     # Define the command to start the video recording
-    command = ['ffmpeg', '-t', str(duration), '-f', 'video4linux2', '-i', '/dev/video0>', filename]
+    command = ['ffmpeg', '-t', '-s', resolution, str(duration), '-f', 'video4linux2', '-i', 'dev/video0', filename]
     # Start the recording process
     process = subprocess.Popen(command)
 
@@ -40,15 +41,14 @@ def getAcclerAndGyro():
             
 
             # recording video for 5 second
-            filename = 'video.avi'
+            filename = 'video.mp4'
             recordVideo(filename=filename)
-            sleep(2)
 
             # sending recorded file with mail
             attachMail.send(filename)
 
             # sending msg
-            msgTwilio.sendMsg()
+            #msgTwilio.sendMsg()
 
         else:
             print("Waiting for motion...")

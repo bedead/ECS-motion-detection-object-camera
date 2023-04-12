@@ -1,11 +1,12 @@
 import time
 from twilio.rest import Client
+import os
 
 def sendMsg():
 
     # Auth    
-    account_sid = 'AC4e706298e8b3ea2bfcd1fc84f5a1a440'
-    auth_token = 'd9f0dae25279510d0b2a0514ccfa94c1'
+    account_sid = os.getenv('sid')
+    auth_token = os.getenv('token')
     client = Client(account_sid, auth_token)
 
     # Send SMS using Twilio
@@ -14,6 +15,5 @@ def sendMsg():
         from_='+15076051161',  # your Twilio phone number
         to='+919550739128',  # recipient's phone number
     )
-    print(message.status)
 
     print('Send.')

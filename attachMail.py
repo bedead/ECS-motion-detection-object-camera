@@ -4,9 +4,10 @@ import os
 # email details
 sender_email = "testman.washere@gmail.com"
 sender_password = "yyckcoqxdjhuiojk"
-receiver_emails = ["vsaipranav2004@gmail.com",'satyammishra9050@gmail.com']
-subject = "Video attachment"
-body = "Please see the attached video file."
+# "vsaipranav2004@gmail.com"
+receiver_emails = 'satyammishra9050@gmail.com'
+subject = "Intruder detected"
+body = "We have detected some motion during your absence.\n Check the below attached file."
 
 def send(filename):
     # attachment details
@@ -19,5 +20,7 @@ def send(filename):
     yag.send(
         to=receiver_emails,
         subject=subject,
-        contents=[body, filepath],
+        contents=[body, filepath]
     )
+
+send('test.txt')
