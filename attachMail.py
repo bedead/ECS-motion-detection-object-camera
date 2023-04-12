@@ -3,9 +3,9 @@ import os
 
 # email details
 sender_email = "testman.washere@gmail.com"
-sender_password = "yyckcoqxdjhuiojk"
-# "vsaipranav2004@gmail.com"
-receiver_emails = 'satyammishra9050@gmail.com'
+
+sender_password = "yyck***********"
+receiver_emails = ["vsaipranav2004@gmail.com",'satyammishra9050@gmail.com']
 subject = "Intruder detected"
 body = "We have detected some motion during your absence."
 
