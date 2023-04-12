@@ -1,5 +1,5 @@
 from asyncio import sleep
-import msgTwilio
+import buzzAlert
 import attachMail
 import subprocess
 import datetime
@@ -26,6 +26,7 @@ def recordVideo(filename):
 def getAcclerAndGyro():
     # Wait for any tilt or acceleration
     while True:
+        print("Waiting for motion...")
         acceleration_data = sensor.get_accel_data()
         gyroscope_data = sensor.get_gyro_data()
         acceleration_threshold = 1.0  # Set acceleration threshold here
@@ -39,20 +40,13 @@ def getAcclerAndGyro():
                 abs(gyroscope_data['z']) > tilt_threshold):
             
 
-            # recording video for 5 second
-            filename = 'video.mp4'
-            recordVideo(filename=filename)
-
+            buzzAlert.play()
             # sending recorded file with mail
-            attachMail.send(filename)
-
-            # sending msg
-            #msgTwilio.sendMsg()
+            attachMail.send()
 
         else:
-            print("Waiting for motion...")
+            pass
 
-        sleep(3)
 
 if __name__== '__main__':
     getAcclerAndGyro()
